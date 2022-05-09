@@ -1,0 +1,21 @@
+/* general */
+
+body {
+  max-width: 3000px;
+  min-width: 300px;
+  margin: auto;
+}
+
+body, button, form, p {
+  font-family: $font-text;
+}
+  
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-text;
+  margin: 0;
+}
+  
+a {
+  color:#333;
+  text-decoration: none;
+}
