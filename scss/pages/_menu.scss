@@ -1,9 +1,12 @@
 /* menu - header */
 
 .header-menu {
-    flex-direction: row;
-    i {
-        margin-left: 10px;
+    position: relative;
+    a {
+        align-self: center;
+        position: absolute;
+        top: 20px;
+        left: 40px;
     }
 }
 
@@ -14,6 +17,9 @@
     height: 250px;
     position: relative;
     z-index: 0;
+    @media (min-width: $tablet) {
+        height: 300px;
+    }
     @media (min-width: $desktop) {
         height: 400px;
     }
@@ -22,98 +28,112 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        }
+    }
 }
 
 .restaurant {
-    padding: 40px 10%;
+    padding: 40px;
     border-radius: 25px 25px 0 0;
     margin-top: -20px;
     background-color: $background-color-light;
     position: relative;
     z-index: 1;
-    @media (min-width: $desktop) {
-        padding: 40px;
-    }
     .restaurant-title {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        @media (min-width: $desktop) {
-            justify-content: center;
-        }
         h1 {
             font-family: $font-title;
             font-size: 1.6rem;
         }
         button, i {
             background-color: $background-color-light;
+            margin: 0;
         }
     }
     h2 {
         font-size: .9rem;
         font-weight: 300;
-        margin-top: 30px;
+        margin-top: 20px;
+        margin-bottom: 0;
         text-transform: uppercase;
     }
     .green-underlined {
         background-color: $tertiary-color;
         width: 35px;
         height: 2px;
-    }
-    .btn-cta {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        padding-left: 30px;
-        padding-right: 30px;
+        margin: 5px 0 10px 0;
     }
 }
 
 .menu {
-    @media (min-width: $desktop) {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        width: 100%;
-    }
-    .sub-menu {
-        @media (min-width: $desktop) {
-            max-width: 700px;
-            min-width: 250px;
-            width: 100%;
-            margin: 0 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, auto);
+    @media (min-width: $tablet) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(10, auto);
+        column-gap: 20px;
+        grid-template-areas: 
+        "title1 title1"
+        "card1 card2"
+        "card3 card4"
+        "title2 title2"
+        "card5 card6"
+        "card7 card8"
+        "title3 title3"
+        "card9 card10"
+        "card11 card12";
+
+        $num-title: 3;
+        @for $i from 1 through $num-title {
+            .sub-menu-title:nth-of-type(#{$i}) {
+                grid-area: title#{(calc(0 + $i))};
+            }
+        }
+
+        $num-card: 12;
+        @for $i from 1 through $num-card {
+            .card#{$i} {
+                grid-area: card#{(calc(0 + $i))};
+            }
         }
     }
-}
-
-.menu-all-card {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    .menu-card {
-        width: 100%;
+    @media (min-width: $desktop) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
+        column-gap: 20px;
+        grid-template-areas: 
+        "title1 title2 title3"
+        "card1 card5 card9"
+        "card2 card6 card10"
+        "card3 card7 card11"
+        "card4 card8 card12";
     }
 }
 
-.menu-card > a {
+/* menu - card */
+
+.sub-menu-card > a {
     @include box(15px, white);
     height: 70px;
     line-height: 1.5rem;
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
     justify-content: flex-start;
     overflow: hidden;
+    width: 100%;
     h3 {
         font-size: 1rem;
         font-weight: 400;
+        margin: 0;
     }
     p {
         font-size: .9rem;
         font-weight: 200;
         margin: 0;
     }
-    .menu-card-text {
+    .sub-menu-card-text {
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
@@ -129,12 +149,26 @@
             width: 100%;
         }
     }
-    .menu-card-price {
+    .sub-menu-card-price {
         margin: 10px;
         align-self: flex-end;
         z-index: 1;
     }
-    .menu-card-picked {
+}
+
+/* menu - animation card-picked */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.sub-menu-card > a {
+    .sub-menu-card-picked {
         background-color: $tertiary-color;
         border-radius: 0 10px 10px 0;
         width: 0px;
@@ -150,7 +184,7 @@
         }
     }
     &:hover {
-        .menu-card-picked {
+        .sub-menu-card-picked {
             width: 80px;
         }
         i {
@@ -160,16 +194,9 @@
     }
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg)
-    }
-    100% {
-        transform: rotate(360deg)
-    }
-}
+/* menu - animation menu-appearance */
 
-@keyframes fade-in {
+@keyframes menu-appearance {
     0% {
         opacity: 0;
         transform: translateY(5px);
@@ -180,33 +207,12 @@
     }
 }
 
-.card1 {
-    animation: 800ms ease-in-out 200ms both fade-in;
-}
-.card2 {
-    animation: 800ms ease-in-out 400ms both fade-in;
-}
-.card3 {
-    animation: 800ms ease-in-out 600ms both fade-in;
-}
-.card4 {
-    animation: 800ms ease-in-out 800ms both fade-in;
-}
-.card5 {
-    animation: 800ms ease-in-out 1000ms both fade-in;
-}
-.card6 {
-    animation: 800ms ease-in-out 1200ms both fade-in;
-}
-.card7 {
-    animation: 800ms ease-in-out 1400ms both fade-in;
-}
-.card8 {
-    animation: 800ms ease-in-out 1600ms both fade-in;
-}
-.card9 {
-    animation: 800ms ease-in-out 1800ms both fade-in;
-}
-.card10 {
-    animation: 800ms ease-in-out 2000ms both fade-in;
+$num-plates: 12;
+$anim-delay: 200ms;
+
+@for $i from 1 through $num-plates {
+    article:nth-of-type(#{$i}) {
+        animation: 800ms ease-in-out both menu-appearance;
+        animation-delay: $anim-delay * $i;
+    }
 }

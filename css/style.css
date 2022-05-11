@@ -339,10 +339,12 @@ template {
 
 /* colors */
 /* font */
-/* box */
-/* container */
 /* media */
 /* general */
+* {
+  box-sizing: border-box;
+}
+
 body {
   max-width: 3000px;
   min-width: 300px;
@@ -351,11 +353,12 @@ body {
 
 body, button, form, p {
   font-family: "Roboto", sans-serif;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
-  margin: 0;
+  margin: 10px 0;
 }
 
 a {
@@ -363,13 +366,16 @@ a {
   text-decoration: none;
 }
 
+.functioning, .restaurants {
+  max-width: 1200px;
+}
+
 /* buttons */
 .btn-cta {
   border-radius: 25px;
   padding: 15px 20px;
+  margin: 30px auto 40px auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   color: white;
   background: linear-gradient(175deg, #FF79DA, #9356DC);
   border: none;
@@ -440,7 +446,7 @@ footer i {
   padding-right: 2px;
 }
 
-/* homepage - loading */
+/* homepage - animation loader */
 @keyframes blank {
   0% {
     opacity: 0;
@@ -454,13 +460,13 @@ footer i {
 }
 .blank {
   animation-name: blank;
-  animation-duration: 3000ms;
+  animation-duration: 3s;
 }
 
 @keyframes loader {
   0% {
     opacity: 0;
-    transform: translate(-200px);
+    transform: translate(-250px);
   }
   25% {
     opacity: 1;
@@ -476,15 +482,19 @@ footer i {
   75% {
     opacity: 1;
   }
+  99% {
+    transform: translate(250px);
+  }
   100% {
     opacity: 0;
-    transform: translate(200px);
+    transform: translate(0px);
   }
 }
 .loader {
   width: 200px;
+  height: 40px;
   position: absolute;
-  bottom: 50%;
+  bottom: calc(50% - 40px);
   right: calc(50% - 100px);
   display: flex;
   flex-flow: row nowrap;
@@ -504,49 +514,57 @@ footer i {
 }
 
 .loader span:nth-child(8) {
-  animation: 1800ms ease-in-out 0ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 0ms;
 }
 
 .loader span:nth-child(7) {
-  animation: 1800ms ease-in-out 100ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 100ms;
 }
 
 .loader span:nth-child(6) {
-  animation: 1800ms ease-in-out 200ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 200ms;
 }
 
 .loader span:nth-child(5) {
-  animation: 1800ms ease-in-out 300ms both loader;
-  padding-right: 4px;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 300ms;
 }
 
 .loader span:nth-child(4) {
-  animation: 1800ms ease-in-out 400ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 400ms;
 }
 
 .loader span:nth-child(3) {
-  animation: 1800ms ease-in-out 500ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 500ms;
 }
 
 .loader span:nth-child(2) {
-  animation: 1800ms ease-in-out 600ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 600ms;
 }
 
 .loader span:nth-child(1) {
-  animation: 1800ms ease-in-out 700ms both loader;
+  animation: 1800ms ease-in-out both loader;
+  animation-delay: 700ms;
+}
+
+.loader span:nth-child(5) {
+  padding-right: 4px;
 }
 
 /* homepage - header */
 header {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 header .logo-header {
-  height: 25px;
-  width: 80%;
-  margin: 15px;
+  height: 30px;
+  margin: 15px 0;
 }
 header img {
   max-width: 100%;
@@ -563,29 +581,24 @@ header img {
   justify-content: center;
   align-items: center;
   background-color: #f6f6f6;
-  padding-bottom: 40px;
 }
 .presentation .location {
   width: 100%;
   padding: 15px 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   background-color: #eaeaea;
   display: flex;
   justify-content: center;
   box-shadow: 0px 2px 2px inset #ccc;
 }
-.presentation .location i {
-  padding-right: 10px;
-}
 .presentation .location address {
   font-style: normal;
-  margin: 0;
-  width: 150px;
+  padding: 0 10px;
 }
 .presentation h1, .presentation p {
   text-align: center;
-  margin: 0 0 20px 0;
-  padding: 0 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 .presentation h1 {
   font-size: 1.5rem;
@@ -595,9 +608,6 @@ header img {
   color: #7d7d7d;
   font-weight: 300;
 }
-.presentation a {
-  margin-top: 10px;
-}
 
 /* homepage - functioning */
 .functioning {
@@ -605,10 +615,12 @@ header img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 25px;
-  width: calc(100% - 50px);
-  max-width: 1200px;
-  margin: auto;
+  margin: 25px 20px;
+}
+@media (min-width: 1225px) {
+  .functioning {
+    margin: 25px auto;
+  }
 }
 .functioning h2 {
   align-self: flex-start;
@@ -619,15 +631,16 @@ header img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 15px 0;
+  margin: 0px 0px 15px 5px;
   width: 100%;
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .functioning-all-elements {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     justify-items: center;
+    column-gap: 20px;
   }
   .functioning-all-elements .functioning-element:nth-child(1) {
     grid-column: 1/3;
@@ -650,25 +663,24 @@ header img {
   }
 }
 .functioning-all-elements .functioning-element {
-  max-width: 900px;
+  max-width: 1000px;
   min-width: 250px;
   margin: 15px 0;
   border-radius: 20px;
   box-shadow: 0px 4px 15px 0px #ddd;
   background-color: #f6f6f6;
-  width: 90%;
-  padding: 10px;
-  margin: 15px;
+  width: 100%;
+  padding: 20px;
   font-weight: 500;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  white-space: nowrap;
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .functioning-all-elements .functioning-element {
-    margin: 15px;
     max-width: 500px;
-    min-width: 250px;
+    min-width: 200px;
   }
 }
 .functioning-all-elements .functioning-element .number {
@@ -677,17 +689,15 @@ header img {
   background-color: #9356DC;
   color: white;
   padding: 3px 7px;
-  font-size: 0.8rem;
-  margin-left: -20px;
+  margin-left: -30px;
 }
 .functioning-all-elements .functioning-element i {
   color: #7d7d7d;
   padding: 0px 25px;
 }
 .functioning-all-elements .functioning-element h3 {
-  padding: 20px 0;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 16px;
 }
 .functioning-all-elements .functioning-element:hover {
   color: #9356DC;
@@ -698,32 +708,31 @@ header img {
 }
 
 /* homepage - restaurants */
-.restaurants {
+.restaurants-container {
   background-color: #f6f6f6;
   padding: 40px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.restaurants .restaurants-container {
+.restaurants-container .restaurants {
   width: 100%;
-  max-width: 1200px;
 }
-.restaurants .restaurants-all-card {
+.restaurants-container .restaurants-all-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
 }
-@media (min-width: 600px) {
-  .restaurants .restaurants-all-card {
+@media (min-width: 768px) {
+  .restaurants-container .restaurants-all-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     align-items: center;
     justify-items: center;
-    row-gap: 20px;
+    row-gap: 30px;
     column-gap: 30px;
   }
 }
@@ -738,14 +747,13 @@ header img {
   flex-direction: column;
   background-color: white;
   border-radius: 20px;
-  margin: 10px 0;
   box-shadow: 2px 2px 10px 0px #ddd;
 }
 .restaurants-card a {
   height: 100%;
   width: 100%;
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .restaurants-card {
     max-width: 600px;
     min-width: 250px;
@@ -801,10 +809,13 @@ header img {
 
 /* menu - header */
 .header-menu {
-  flex-direction: row;
+  position: relative;
 }
-.header-menu i {
-  margin-left: 10px;
+.header-menu a {
+  align-self: center;
+  position: absolute;
+  top: 20px;
+  left: 40px;
 }
 
 /* menu - main */
@@ -813,6 +824,11 @@ header img {
   height: 250px;
   position: relative;
   z-index: 0;
+}
+@media (min-width: 768px) {
+  .main-img {
+    height: 300px;
+  }
 }
 @media (min-width: 992px) {
   .main-img {
@@ -827,27 +843,17 @@ header img {
 }
 
 .restaurant {
-  padding: 40px 10%;
+  padding: 40px;
   border-radius: 25px 25px 0 0;
   margin-top: -20px;
   background-color: #f6f6f6;
   position: relative;
   z-index: 1;
 }
-@media (min-width: 992px) {
-  .restaurant {
-    padding: 40px;
-  }
-}
 .restaurant .restaurant-title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-@media (min-width: 992px) {
-  .restaurant .restaurant-title {
-    justify-content: center;
-  }
 }
 .restaurant .restaurant-title h1 {
   font-family: "Shrikhand", cursive;
@@ -855,54 +861,92 @@ header img {
 }
 .restaurant .restaurant-title button, .restaurant .restaurant-title i {
   background-color: #f6f6f6;
+  margin: 0;
 }
 .restaurant h2 {
   font-size: 0.9rem;
   font-weight: 300;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 0;
   text-transform: uppercase;
 }
 .restaurant .green-underlined {
   background-color: #99E2D0;
   width: 35px;
   height: 2px;
-}
-.restaurant .btn-cta {
-  margin-top: 50px;
-  margin-bottom: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
+  margin: 5px 0 10px 0;
 }
 
+.menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(10, auto);
+}
+@media (min-width: 768px) {
+  .menu {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(10, auto);
+    column-gap: 20px;
+    grid-template-areas: "title1 title1" "card1 card2" "card3 card4" "title2 title2" "card5 card6" "card7 card8" "title3 title3" "card9 card10" "card11 card12";
+  }
+  .menu .sub-menu-title:nth-of-type(1) {
+    grid-area: title1;
+  }
+  .menu .sub-menu-title:nth-of-type(2) {
+    grid-area: title2;
+  }
+  .menu .sub-menu-title:nth-of-type(3) {
+    grid-area: title3;
+  }
+  .menu .card1 {
+    grid-area: card1;
+  }
+  .menu .card2 {
+    grid-area: card2;
+  }
+  .menu .card3 {
+    grid-area: card3;
+  }
+  .menu .card4 {
+    grid-area: card4;
+  }
+  .menu .card5 {
+    grid-area: card5;
+  }
+  .menu .card6 {
+    grid-area: card6;
+  }
+  .menu .card7 {
+    grid-area: card7;
+  }
+  .menu .card8 {
+    grid-area: card8;
+  }
+  .menu .card9 {
+    grid-area: card9;
+  }
+  .menu .card10 {
+    grid-area: card10;
+  }
+  .menu .card11 {
+    grid-area: card11;
+  }
+  .menu .card12 {
+    grid-area: card12;
+  }
+}
 @media (min-width: 992px) {
   .menu {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    width: 100%;
-  }
-}
-@media (min-width: 992px) {
-  .menu .sub-menu {
-    max-width: 700px;
-    min-width: 250px;
-    width: 100%;
-    margin: 0 15px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    column-gap: 20px;
+    grid-template-areas: "title1 title2 title3" "card1 card5 card9" "card2 card6 card10" "card3 card7 card11" "card4 card8 card12";
   }
 }
 
-.menu-all-card {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-}
-.menu-all-card .menu-card {
-  width: 100%;
-}
-
-.menu-card > a {
-  max-width: 900px;
+/* menu - card */
+.sub-menu-card > a {
+  max-width: 1000px;
   min-width: 250px;
   margin: 15px 0;
   border-radius: 15px;
@@ -911,20 +955,22 @@ header img {
   height: 70px;
   line-height: 1.5rem;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   justify-content: flex-start;
   overflow: hidden;
+  width: 100%;
 }
-.menu-card > a h3 {
+.sub-menu-card > a h3 {
   font-size: 1rem;
   font-weight: 400;
+  margin: 0;
 }
-.menu-card > a p {
+.sub-menu-card > a p {
   font-size: 0.9rem;
   font-weight: 200;
   margin: 0;
 }
-.menu-card > a .menu-card-text {
+.sub-menu-card > a .sub-menu-card-text {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -933,19 +979,29 @@ header img {
   width: 90%;
   overflow: hidden;
 }
-.menu-card > a .menu-card-text h3, .menu-card > a .menu-card-text p {
+.sub-menu-card > a .sub-menu-card-text h3, .sub-menu-card > a .sub-menu-card-text p {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 100%;
 }
-.menu-card > a .menu-card-price {
+.sub-menu-card > a .sub-menu-card-price {
   margin: 10px;
   align-self: flex-end;
   z-index: 1;
 }
-.menu-card > a .menu-card-picked {
+
+/* menu - animation card-picked */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.sub-menu-card > a .sub-menu-card-picked {
   background-color: #99E2D0;
   border-radius: 0 10px 10px 0;
   width: 0px;
@@ -955,28 +1011,21 @@ header img {
   transition-duration: 200ms;
   transition-timing-function: linear;
 }
-.menu-card > a .menu-card-picked i {
+.sub-menu-card > a .sub-menu-card-picked i {
   color: white;
   font-size: 1.5rem;
   align-self: center;
 }
-.menu-card > a:hover .menu-card-picked {
+.sub-menu-card > a:hover .sub-menu-card-picked {
   width: 80px;
 }
-.menu-card > a:hover i {
+.sub-menu-card > a:hover i {
   animation-name: rotate;
   animation-duration: 800ms;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes fade-in {
+/* menu - animation menu-appearance */
+@keyframes menu-appearance {
   0% {
     opacity: 0;
     transform: translateY(5px);
@@ -986,44 +1035,64 @@ header img {
     transform: translateY(0px);
   }
 }
-.card1 {
-  animation: 800ms ease-in-out 200ms both fade-in;
+article:nth-of-type(1) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 200ms;
 }
 
-.card2 {
-  animation: 800ms ease-in-out 400ms both fade-in;
+article:nth-of-type(2) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 400ms;
 }
 
-.card3 {
-  animation: 800ms ease-in-out 600ms both fade-in;
+article:nth-of-type(3) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 600ms;
 }
 
-.card4 {
-  animation: 800ms ease-in-out 800ms both fade-in;
+article:nth-of-type(4) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 800ms;
 }
 
-.card5 {
-  animation: 800ms ease-in-out 1000ms both fade-in;
+article:nth-of-type(5) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 1000ms;
 }
 
-.card6 {
-  animation: 800ms ease-in-out 1200ms both fade-in;
+article:nth-of-type(6) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 1200ms;
 }
 
-.card7 {
-  animation: 800ms ease-in-out 1400ms both fade-in;
+article:nth-of-type(7) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 1400ms;
 }
 
-.card8 {
-  animation: 800ms ease-in-out 1600ms both fade-in;
+article:nth-of-type(8) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 1600ms;
 }
 
-.card9 {
-  animation: 800ms ease-in-out 1800ms both fade-in;
+article:nth-of-type(9) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 1800ms;
 }
 
-.card10 {
-  animation: 800ms ease-in-out 2000ms both fade-in;
+article:nth-of-type(10) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 2000ms;
+}
+
+article:nth-of-type(11) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 2200ms;
+}
+
+article:nth-of-type(12) {
+  animation: 800ms ease-in-out both menu-appearance;
+  animation-delay: 2400ms;
 }
 
 /*# sourceMappingURL=style.css.map */

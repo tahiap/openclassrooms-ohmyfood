@@ -1,5 +1,9 @@
 /* general */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   max-width: 3000px;
   min-width: 300px;
@@ -8,14 +12,19 @@ body {
 
 body, button, form, p {
   font-family: $font-text;
+  margin: 0;
 }
   
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-text;
-  margin: 0;
+  margin: 10px 0;
 }
   
 a {
-  color:#333;
+  color: $font-dark;
   text-decoration: none;
+}
+
+.functioning, .restaurants {
+  max-width: 1200px;
 }

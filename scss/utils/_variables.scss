@@ -5,20 +5,15 @@ $tertiary-color: #99E2D0;
 
 $background-color-light: #f6f6f6;
 $background-color-dark: #353535;
-$form-color: #eaeaea;
-$gray-font: #7d7d7d;
+$background-address-color: #eaeaea;
+
+$font-dark: #333;
+$font-light: #7d7d7d;
 
 /* font */
 $font-title: 'Shrikhand', cursive;
 $font-text: 'Roboto', sans-serif;
 
-/* box */
-$max-width-element: 900px;
-$min-width-element: 250px;
-
-/* container */
-$max-width-container: 1200px;
-
 /* media */
 $desktop: 992px;
-$tablet: 600px;
+$tablet: 768px;
