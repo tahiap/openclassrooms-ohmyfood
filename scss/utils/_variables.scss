@@ -15,5 +15,9 @@ $font-title: 'Shrikhand', cursive;
 $font-text: 'Roboto', sans-serif;
 
 /* media */
-$desktop: 992px;
-$tablet: 768px;
+$xl-screen: 992px; /* desktop */
+$l-screen: 769px; /* small screen */
+$m-screen: 650px; /* tablet */
+
+/* container */
+$max-width-container: 1200px;

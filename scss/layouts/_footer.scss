@@ -1,9 +1,15 @@
 /* footer */
 
-footer {
+.max-width {
+  width: 100%;
+  max-width: $max-width-container;
+  margin: auto;
+}
+
+.footer-container {
     background-color: $background-color-dark;
     color:white;
-    padding: 20px;
+    padding: 5px 20px 20px 20px;
     line-height: 1.4rem;
     h2 {
       padding: 10px 0 15px 0;
