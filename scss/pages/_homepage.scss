@@ -138,23 +138,12 @@ header {
   
 /* homepage - functioning */
 
-
-.functioning {
-  max-width: $max-width-container;
-  margin: 25px 20px;
-  @media (min-width: calc($max-width-container + 50px)) {
-    margin: 25px auto;
-  }
-  h2 {
-    align-self: flex-start;
-  }
-}
-
 .functioning {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
-  row-gap: 30px;
+  row-gap: $gapx;
+  margin: $my-container $mx-container;
   @media (min-width: $m-screen) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, auto);
@@ -201,6 +190,9 @@ header {
       grid-row: 2;
     }
   }
+  @media (min-width: calc($max-width-container + $mx-container * 2)) {
+    margin: $my-container auto;
+    }
 }
 
 .functioning-element {
@@ -238,22 +230,18 @@ header {
 }
 
 /* homepage - restaurants */
-  
-.restaurants-container {
-  background-color: $background-color-light;
-  padding: 40px 25px;
-  display: flex;
-  justify-content: center;
-}
 
 .restaurants {
+  padding: $my-container $mx-container;
+  background-color: $background-color-light;
+  margin: auto;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(5, auto);
   row-gap: 30px;
   @media (min-width: $m-screen) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, auto);
     grid-template-areas: 
     "section-title section-title"
@@ -263,6 +251,7 @@ header {
     h2 {
       grid-area: section-title;
       margin-bottom: 0;
+      width: 100%;
     }
   }
 }
@@ -271,6 +260,7 @@ header {
   height: 300px;
   width: 100%;
   min-width: 250px;
+  max-width: calc($max-width-container / 2 - $mx-container / 2);
   border-radius: 20px;
   display: flex;
   flex-direction: column;

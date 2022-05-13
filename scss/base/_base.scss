@@ -5,13 +5,7 @@
 }
 
 body {
-  max-width: 3000px;
-  min-width: 300px;
   margin: auto;
-}
-
-.functioning, .restaurants {
-  max-width: $max-width-container;
 }
 
 body, button, form, p {
@@ -23,15 +17,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-text;
 }
 
-h2 {
-  margin: 10px 0 0 0;
-}
-
-h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   margin: 5px 0;
 }
   
 a {
   color: $font-dark;
   text-decoration: none;
+}
+
+.max-width {
+  max-width: $max-width-container;
+  margin: auto;
+}
+
+.flex-start {
+  justify-self: flex-start;
+}
+
+.flex-end {
+  justify-self: flex-end;
 }
