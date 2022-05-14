@@ -1,4 +1,4 @@
-/* general */
+/* reset */
 
 * {
   box-sizing: border-box;
@@ -25,6 +25,17 @@ a {
   color: $font-dark;
   text-decoration: none;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* general */
 
 .max-width {
   max-width: $max-width-container;
