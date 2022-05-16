@@ -6,6 +6,7 @@
 
 body {
   margin: auto;
+  min-width: 200px;
 }
 
 body, button, form, p {
@@ -42,10 +43,10 @@ li {
   margin: auto;
 }
 
-.flex-start {
-  justify-self: flex-start;
+.self-start {
+  justify-self: start;
 }
 
-.flex-end {
-  justify-self: flex-end;
+.self-end {
+  justify-self: end;
 }
