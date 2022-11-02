@@ -7,6 +7,6 @@ Il a pour objectif de se former au CSS avancé et à SASS par l'intégration com
 # Guide de déploiement
 
 Cloner le repository :
-$ git clone https://github.com/tahiap/openclassrooms-p3-ohmyfood.git
+$ git clone https://github.com/tahiap/openclassrooms-ohmyfood.git
 
 Ouvrir avec Live Server.
